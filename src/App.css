@@ -1,0 +1,36 @@
+.card {
+    width: 20px;
+}
+
+.grid {
+    display: flex;
+}
+
+.icon {
+    display: grid;
+}
+
+.loginForm {
+    display: grid; 
+}
+
+.navbar {
+    margin-bottom: 20px;
+}
+
+.popoverGrid {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.icon {
+    padding: 0;
+    background: none ;
+    border: none ;
+}
+
+.icon:hover {
+    background-color: rgb(220, 220, 220);
+    border-radius: 100px
+  }
