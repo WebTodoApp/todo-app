@@ -2,7 +2,6 @@ import Navbar from './components/Navbar'
 import Grids from './components/Grid'
 import Container from '@mui/material/Container';
 import PopupColumn from './components/PopupColumn';
-import PopupEditCard from './components/PopupEditCard';
 import Login from './pages/login';
 import Register from './pages/register';
 import './App.css'
