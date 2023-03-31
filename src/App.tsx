@@ -13,8 +13,9 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 function App() {
 
   return (
-    <Container> 
+    <div> 
       <Navbar/>
+      <Container>
     <Router>
       <Routes>
         <Route path="/" Component={Grids}/>
@@ -24,6 +25,7 @@ function App() {
       </Routes>
     </Router>
     </Container>
+    </div>
   )
 }
 

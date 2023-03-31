@@ -34,3 +34,7 @@
     background-color: rgb(220, 220, 220);
     border-radius: 100px
   }
+
+body{
+    margin: 0;
+}
