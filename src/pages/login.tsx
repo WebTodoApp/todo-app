@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { API_URL } from '../../env';
-import CustomAlert from '../components/CustomAlert';
 import { useState } from 'react';
 import { TextField, Button, Typography, Box, Alert } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
@@ -42,7 +41,6 @@ function LoginForm() {
 
   return (
     <div>
-      <CustomAlert />
       <Box sx={{ maxWidth: 400, mx: 'auto', pt: 20 }}>
         <Typography variant="h4" gutterBottom>
           Se connecter
