@@ -3,14 +3,14 @@ import { API_URL } from '../../env';
 import { useState } from 'react';
 import { TextField, Button, Typography, Box, Alert } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-import { DefaultApi } from '../apis/DefaultApi';
-import { ApiAuthLoginPostRequest } from '../models/ApiAuthLoginPostRequest';
+import { AuthService } from '../api/services/AuthService';
+
 
 
 function LoginForm() {
   const navigate = useNavigate();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState<string>('');
+  const [password, setPassword] = useState<string>("");
 
   const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(event.target.value);
@@ -20,16 +20,18 @@ function LoginForm() {
     setPassword(event.target.value);
   };
 
-  const api = new DefaultApi();
-
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const data = { email, password };
-    console.log(data)
+    const data = {email, password};
     try {
-      await api.apiAuthLoginPost(data);
-      console.log('login successful');
-      navigate('/');
+      AuthService.postApiAuthLogin(data).then(res => {
+        console.log(res);
+        if(res.success) {
+          navigate('/');
+        }    
+      }).catch(err => {
+        console.log(err);
+      });
     } catch (error) {
       console.error('login error:', error);
     }
