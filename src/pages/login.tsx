@@ -3,6 +3,9 @@ import { API_URL } from '../../env';
 import { useState } from 'react';
 import { TextField, Button, Typography, Box, Alert } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+import { DefaultApi } from '../apis/DefaultApi';
+import { ApiAuthLoginPostRequest } from '../models/ApiAuthLoginPostRequest';
+
 
 function LoginForm() {
   const navigate = useNavigate();
@@ -17,23 +20,16 @@ function LoginForm() {
     setPassword(event.target.value);
   };
 
+  const api = new DefaultApi();
+
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = { email, password };
+    console.log(data)
     try {
-      const response = await fetch(`${API_URL}/auth/login`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
-      });
-      const json = await response.json();
-      console.log('login response:', json);
-      if (json.success) {
-        console.log('login successful');
-        navigate('/');
-      } else {
-        console.log('login failed');
-      }
+      await api.apiAuthLoginPost(data);
+      console.log('login successful');
+      navigate('/');
     } catch (error) {
       console.error('login error:', error);
     }
