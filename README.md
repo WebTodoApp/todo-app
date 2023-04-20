@@ -1,6 +1,6 @@
 # Description 
 
-TodoApp api with React + MUI + TS
+TodoApp Front with React + MUI + TS
 
 # Started
 
