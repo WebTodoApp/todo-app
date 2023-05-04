@@ -14,7 +14,7 @@ import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 
 const pages = ['Dashboard'];
-const settings = ['Profile', 'Connexion'];
+const settings = ['profile', 'login'];
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
@@ -117,6 +117,7 @@ function ResponsiveAppBar() {
             {pages.map((page) => (
               <Button
                 key={page}
+                href="/Dashboard"
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
@@ -151,7 +152,7 @@ function ResponsiveAppBar() {
                 <MenuItem key={key} onClick={handleCloseUserMenu}>
                   <Typography
                     component="a"
-                    href="/login"
+                    href={`/${setting}`}
                     textAlign="center"
                     sx={{
                       display: { xs: 'none', md: 'flex' },

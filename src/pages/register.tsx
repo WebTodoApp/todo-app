@@ -3,6 +3,7 @@ import { API_URL } from '../../env';
 import { useState } from 'react';
 import { TextField, Button, Typography, Box } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+import { AuthService } from '../api/services/AuthService';
 
 function RegisterForm() {
 
@@ -39,29 +40,23 @@ function RegisterForm() {
       const handleUserChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setUser(event.target.value);
       };
-    
+      
       const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         const data = { username, email, password, confirmPassword };
         try {
-          const response = await fetch(`${API_URL}/auth/register`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(data)
+          AuthService.postApiAuthRegister(data).then(res => {
+            console.log(res);
+            if(res.success) {
+              navigate('/login');                    
+            }    
+          }).catch(err => {
+            console.log(err);
           });
-          const json = await response.json();
-          console.log('Registration response:', json);
-          if (json.success) {
-            console.log('Registration successful');
-            navigate('/login');
-          } else {
-            console.log('Registration failed');
-          }
         } catch (error) {
-          console.error('Registration error:', error);
+          console.error('login error:', error);
         }
       };
-    
     return (
       <Box sx={{ maxWidth: 400, mx: 'auto', pt: 10}}>
         <Typography variant="h4" gutterBottom>

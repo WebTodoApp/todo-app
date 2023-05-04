@@ -5,8 +5,6 @@ import { TextField, Button, Typography, Box, Alert } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { AuthService } from '../api/services/AuthService';
 
-
-
 function LoginForm() {
   const navigate = useNavigate();
   const [email, setEmail] = useState<string>('');
